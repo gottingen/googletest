@@ -18,4 +18,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='@CMAKE_INSTALL_FULL_LIBDIR@'
+libdir='lib'

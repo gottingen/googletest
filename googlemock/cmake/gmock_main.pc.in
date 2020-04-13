@@ -1,6 +1,6 @@
 prefix=${pcfiledir}/../..
-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+libdir=${prefix}/lib
+includedir=${prefix}/include
 
 Name: gmock_main
 Description: GoogleMock (with main() function)
