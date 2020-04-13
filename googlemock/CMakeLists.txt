@@ -109,10 +109,10 @@ endif()
 if (DEFINED CMAKE_VERSION AND NOT "${CMAKE_VERSION}" VERSION_LESS "2.8.11")
   target_include_directories(gmock SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gmock_build_include_dirs}>"
-    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>")
+    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>")
   target_include_directories(gmock_main SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gmock_build_include_dirs}>"
-    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>")
+    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>")
 endif()
 
 ########################################################################

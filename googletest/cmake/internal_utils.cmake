@@ -327,13 +327,13 @@ endfunction()
 function(install_project)
   if(INSTALL_GTEST)
     install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
-      DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+      DESTINATION include)
     # Install the project targets.
     install(TARGETS ${ARGN}
       EXPORT ${targets_export_name}
-      RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-      ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-      LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+      RUNTIME DESTINATION bin
+      ARCHIVE DESTINATION lib
+      LIBRARY DESTINATION lib)
     if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
       # Install PDBs
       foreach(t ${ARGN})
@@ -342,7 +342,7 @@ function(install_project)
         get_target_property(t_pdb_output_directory ${t} PDB_OUTPUT_DIRECTORY)
         install(FILES
           "${t_pdb_output_directory}/\${CMAKE_INSTALL_CONFIG_NAME}/$<$<CONFIG:Debug>:${t_pdb_name_debug}>$<$<NOT:$<CONFIG:Debug>>:${t_pdb_name}>.pdb"
-          DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          DESTINATION lib
           OPTIONAL)
       endforeach()
     endif()
@@ -352,7 +352,7 @@ function(install_project)
       configure_file("${PROJECT_SOURCE_DIR}/cmake/${t}.pc.in"
         "${configured_pc}" @ONLY)
       install(FILES "${configured_pc}"
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+        DESTINATION "lib/pkgconfig")
     endforeach()
   endif()
 endfunction()

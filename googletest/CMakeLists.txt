@@ -98,7 +98,7 @@ if (INSTALL_GTEST)
   set(cmake_package_name GTest)
   set(targets_export_name ${cmake_package_name}Targets CACHE INTERNAL "")
   set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated" CACHE INTERNAL "")
-  set(cmake_files_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${cmake_package_name}")
+  set(cmake_files_install_dir "lib/cmake/${cmake_package_name}")
   set(version_file "${generated_dir}/${cmake_package_name}ConfigVersion.cmake")
   write_basic_package_version_file(${version_file} VERSION ${GOOGLETEST_VERSION} COMPATIBILITY AnyNewerVersion)
   install(EXPORT ${targets_export_name}
@@ -133,10 +133,10 @@ cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
 if (DEFINED CMAKE_VERSION AND NOT "${CMAKE_VERSION}" VERSION_LESS "2.8.11")
   target_include_directories(gtest SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gtest_build_include_dirs}>"
-    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>")
+    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>")
   target_include_directories(gtest_main SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gtest_build_include_dirs}>"
-    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>")
+    "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>")
 endif()
 target_link_libraries(gtest_main PUBLIC gtest)
 
